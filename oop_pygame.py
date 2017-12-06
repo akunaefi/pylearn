@@ -11,14 +11,17 @@ game_display = pygame.display.set_mode((WIDTH,HEIGHT))
 pygame.display.set_caption("BLOB WORLD")
 clock = pygame.time.Clock()
 
+# definisi class
 class Blob:
 
+    # constructor
     def __init__(self,color):
         self.x = random.randrange(0,WIDTH)
         self.y = random.randrange(0, HEIGHT)
         self.size = random.randrange(4,8)
         self.color = color
 
+    # class function, masih masuk dalam class karena terindentasi
     def move(self):
         self.move_x = random.randrange(-1,2)
         self.move_y = random.randrange(-1,2)
@@ -38,8 +41,12 @@ def draw_environment(blob):
     pygame.display.update()
     blob.move()
 
+# fungsi main
 def main():
+
+    # instantiate class
     red_blob = Blob(RED)
+    blue_blob = Blob(BLUE)
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -47,7 +54,9 @@ def main():
                 quit()
 
         draw_environment(red_blob)
+        draw_environment(blue_blob)
         clock.tick(60)
 
+#panggil main pertama kali
 if __name__ == '__main__':
     main()
